@@ -114,9 +114,17 @@ class Extended
 
     /**
      * Returns last 7 blocks.
+     *
+     * @return array
      */
     public function getLastBlocks()
     {
+        return \GuzzleHttp\json_decode(
+            $this->client
+                       ->get('getlastblocks')
+                       ->getBody()
+                       ->getContents()
+        ) ?? [];
     }
 
     /**

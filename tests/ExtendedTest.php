@@ -77,4 +77,13 @@ class ExtendedTest extends TestCase
         $this->assertInternalType('array', $response);
         $this->assertNotEmpty($response);
     }
+
+    public function testCanGetLastBlocks()
+    {
+        $response = $this->instance
+            ->getLastBlocks();
+
+        $this->assertInternalType('array', $response);
+        $this->assertNotEmpty($response);
+    }
 }
