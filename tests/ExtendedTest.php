@@ -1,0 +1,47 @@
+<?php
+
+namespace pxgamer\BTGExp;
+
+use PHPUnit\Framework\TestCase;
+
+/**
+ * Class ExtendedTest
+ */
+class ExtendedTest extends TestCase
+{
+    /**
+     * @var Extended
+     */
+    private $instance;
+
+    /**
+     * Set up the instance
+     */
+    public function setUp()
+    {
+        $this->instance = new Extended();
+    }
+
+    public function testCanGetMoneySupply()
+    {
+        $response = $this->instance->getMoneySupply();
+
+        $this->assertInternalType('double', $response);
+        $this->assertGreaterThan(0, $response);
+    }
+
+    public function testCanGetNetwork()
+    {
+        $response = $this->instance->getNetwork();
+
+        $this->assertInstanceOf(Network::class, $response);
+        $this->assertInternalType('int', $response->getVersion());
+        $this->assertInternalType('int', $response->getProtocolVersion());
+        $this->assertInternalType('int', $response->getBlocks());
+        $this->assertInternalType('int', $response->getConnections());
+        $this->assertInternalType('double', $response->getDifficulty());
+        $this->assertInternalType('boolean', $response->isTestnet());
+        $this->assertInternalType('boolean', $response->isMainnet());
+        $this->assertInternalType('int', $response->getTimeOffset());
+    }
+}
