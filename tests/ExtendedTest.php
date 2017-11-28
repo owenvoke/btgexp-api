@@ -59,4 +59,13 @@ class ExtendedTest extends TestCase
         $this->assertInternalType('double', $response->getReceived());
         $this->assertInternalType('array', $response->getLastTransactions());
     }
+
+    public function testCanGetBalance()
+    {
+        $response = $this->instance
+            ->getBalance(self::TEST_ADDRESS);
+
+        $this->assertInternalType('double', $response);
+        $this->assertGreaterThan(0, $response);
+    }
 }

@@ -62,11 +62,11 @@ class Extended
     /**
      * Returns information for given address.
      *
-     * @param $address
+     * @param string $address
      *
      * @return Address
      */
-    public function getAddress($address)
+    public function getAddress(string $address)
     {
         return (new Address())
             ->populate(
@@ -82,10 +82,15 @@ class Extended
     /**
      * Returns current balance of given address.
      *
-     * @param $address
+     * @param string $address
+     * @return double
      */
-    public function getBalance($address)
+    public function getBalance(string $address)
     {
+        return (double)$this->client
+            ->get('getbalance/'.$address)
+            ->getBody()
+            ->getContents();
     }
 
     /**
