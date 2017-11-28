@@ -68,4 +68,13 @@ class ExtendedTest extends TestCase
         $this->assertInternalType('double', $response);
         $this->assertGreaterThan(0, $response);
     }
+
+    public function testCanGetLastTransactions()
+    {
+        $response = $this->instance
+            ->getLastTransactions(10, 100);
+
+        $this->assertInternalType('array', $response);
+        $this->assertNotEmpty($response);
+    }
 }

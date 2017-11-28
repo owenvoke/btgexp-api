@@ -83,6 +83,7 @@ class Extended
      * Returns current balance of given address.
      *
      * @param string $address
+     *
      * @return double
      */
     public function getBalance(string $address)
@@ -98,10 +99,17 @@ class Extended
      *
      * @param int $count
      * @param int $min
-     * @return void Value in satoshis
+     *
+     * @return array Value in satoshis
      */
     public function getLastTransactions($count = 10, $min = 100)
     {
+        return \GuzzleHttp\json_decode(
+            $this->client
+                       ->get('getlasttxs/'.$count.'/'.$min)
+                       ->getBody()
+                       ->getContents()
+        )->data ?? [];
     }
 
     /**
