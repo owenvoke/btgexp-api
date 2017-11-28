@@ -102,7 +102,7 @@ class Extended
      *
      * @return array Value in satoshis
      */
-    public function getLastTransactions($count = 10, $min = 100)
+    public function getLastTransactions(int $count = 10, int $min = 100)
     {
         return \GuzzleHttp\json_decode(
             $this->client
@@ -130,9 +130,20 @@ class Extended
     /**
      * Returns a block by it's height.
      *
-     * @param $height
+     * @param int $height
+     *
+     * @return Block
      */
-    public function getBlockByHeight($height)
+    public function getBlockByHeight(int $height)
     {
+        return (new Block())
+            ->populate(
+                \GuzzleHttp\json_decode(
+                    $this->client
+                        ->get('getblockbyheight/'.$height)
+                        ->getBody()
+                        ->getContents()
+                )
+            );
     }
 }

@@ -86,4 +86,32 @@ class ExtendedTest extends TestCase
         $this->assertInternalType('array', $response);
         $this->assertNotEmpty($response);
     }
+
+    public function testCanGetBlockByHeight()
+    {
+        $response = $this->instance
+            ->getBlockByHeight(500001);
+
+        $this->assertInstanceOf(Block::class, $response);
+        $this->assertInternalType('string', $response->getHash());
+        $this->assertInternalType('int', $response->getConfirmations());
+        $this->assertInternalType('int', $response->getStrippedSize());
+        $this->assertInternalType('int', $response->getSize());
+        $this->assertInternalType('int', $response->getWeight());
+        $this->assertInternalType('int', $response->getHeight());
+        $this->assertInternalType('int', $response->getVersion());
+        $this->assertInternalType('string', $response->getVersionHex());
+        $this->assertInternalType('string', $response->getMerkleRoot());
+        $this->assertInternalType('array', $response->getTransactionHashes());
+        $this->assertInternalType('int', $response->getTime());
+        $this->assertInternalType('int', $response->getMedianTime());
+        $this->assertInternalType('int', $response->getNonceUint32());
+        $this->assertInternalType('string', $response->getNonce());
+        $this->assertInternalType('string', $response->getBits());
+        $this->assertInternalType('double', $response->getDifficulty());
+        $this->assertInternalType('string', $response->getChainWork());
+        $this->assertInternalType('string', $response->getPreviousBlockHash());
+        $this->assertInternalType('string', $response->getNextBlockHash());
+        $this->assertInstanceOf(\stdClass::class, $response->getTransactions());
+    }
 }
