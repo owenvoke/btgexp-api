@@ -63,9 +63,20 @@ class Extended
      * Returns information for given address.
      *
      * @param $address
+     *
+     * @return Address
      */
     public function getAddress($address)
     {
+        return (new Address())
+            ->populate(
+                \GuzzleHttp\json_decode(
+                    $this->client
+                        ->get('getaddress/'.$address)
+                        ->getBody()
+                        ->getContents()
+                )
+            );
     }
 
     /**

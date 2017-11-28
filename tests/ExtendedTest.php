@@ -9,6 +9,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ExtendedTest extends TestCase
 {
+    const TEST_ADDRESS = 'GP4MnT7Xm4ahZhRcWFaqPGkZknMda1XuzA';
     /**
      * @var Extended
      */
@@ -24,7 +25,8 @@ class ExtendedTest extends TestCase
 
     public function testCanGetMoneySupply()
     {
-        $response = $this->instance->getMoneySupply();
+        $response = $this->instance
+            ->getMoneySupply();
 
         $this->assertInternalType('double', $response);
         $this->assertGreaterThan(0, $response);
@@ -32,7 +34,8 @@ class ExtendedTest extends TestCase
 
     public function testCanGetNetwork()
     {
-        $response = $this->instance->getNetwork();
+        $response = $this->instance
+            ->getNetwork();
 
         $this->assertInstanceOf(Network::class, $response);
         $this->assertInternalType('int', $response->getVersion());
@@ -43,5 +46,17 @@ class ExtendedTest extends TestCase
         $this->assertInternalType('boolean', $response->isTestnet());
         $this->assertInternalType('boolean', $response->isMainnet());
         $this->assertInternalType('int', $response->getTimeOffset());
+    }
+
+    public function testCanGetAddress()
+    {
+        $response = $this->instance
+            ->getAddress(self::TEST_ADDRESS);
+
+        $this->assertInstanceOf(Address::class, $response);
+        $this->assertInternalType('string', $response->getAddress());
+        $this->assertInternalType('double', $response->getSent());
+        $this->assertInternalType('double', $response->getReceived());
+        $this->assertInternalType('array', $response->getLastTransactions());
     }
 }
