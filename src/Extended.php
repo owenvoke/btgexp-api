@@ -66,7 +66,6 @@ class Extended
      */
     public function getAddress($address)
     {
-
     }
 
     /**
@@ -76,7 +75,6 @@ class Extended
      */
     public function getBalance($address)
     {
-
     }
 
     /**
@@ -88,7 +86,6 @@ class Extended
      */
     public function getLastTransactions($count = 10, $min = 100)
     {
-
     }
 
     /**
@@ -96,7 +93,6 @@ class Extended
      */
     public function getLastBlocks()
     {
-
     }
 
     /**
@@ -106,6 +102,5 @@ class Extended
      */
     public function getBlockByHeight($height)
     {
-
     }
 }
