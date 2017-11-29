@@ -68,7 +68,7 @@ class Basic
     }
 
     /**
-     * Returns the hash of the block at ; index 0 is the genesis block.
+     * Returns the hash of the block at the specified index.
      *
      * @param int $index
      *
