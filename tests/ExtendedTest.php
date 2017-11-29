@@ -69,6 +69,7 @@ class ExtendedTest extends TestCase
         $this->assertInternalType('string', $response->getAddress());
         $this->assertInternalType('double', $response->getSent());
         $this->assertInternalType('double', $response->getReceived());
+        $this->assertInternalType('string', $response->getBalance());
         $this->assertInternalType('array', $response->getLastTransactions());
     }
 
