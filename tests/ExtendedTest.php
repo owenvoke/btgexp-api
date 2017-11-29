@@ -85,6 +85,7 @@ class ExtendedTest extends TestCase
 
         $this->assertInternalType('array', $response);
         $this->assertNotEmpty($response);
+        $this->assertInstanceOf(Block::class, $response[0]);
     }
 
     public function testCanGetBlockByHeight()

@@ -106,9 +106,9 @@ class Extended
     {
         return \GuzzleHttp\json_decode(
             $this->client
-                       ->get('getlasttxs/'.$count.'/'.$min)
-                       ->getBody()
-                       ->getContents()
+                    ->get('getlasttxs/'.$count.'/'.$min)
+                    ->getBody()
+                    ->getContents()
         )->data ?? [];
     }
 
@@ -119,12 +119,21 @@ class Extended
      */
     public function getLastBlocks()
     {
-        return \GuzzleHttp\json_decode(
+        $blocks = [];
+
+        $data = \GuzzleHttp\json_decode(
             $this->client
-                       ->get('getlastblocks')
-                       ->getBody()
-                       ->getContents()
+                    ->get('getlastblocks')
+                    ->getBody()
+                    ->getContents()
         ) ?? [];
+
+        foreach ($data as $blockId => $block) {
+            $blocks[] = (new Block())
+                ->populate($block);
+        }
+
+        return $blocks;
     }
 
     /**
