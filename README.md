@@ -27,9 +27,109 @@ $ composer require pxgamer/btgexp-api
 
 ## Usage
 
-``` php
-$skeleton = new pxgamer\BTGExp();
-echo $skeleton->echoPhrase('Hello, League!');
+### Basic methods
+
+Initialise the `Basic` class.
+
+```php
+$basic = new pxgamer\BTGExp\Basic();
+```
+
+Retrieve the current difficulty as a `double`.
+
+```php
+$basic->getDifficulty();
+```
+
+Retrieve the current connection count as an `integer`.
+
+```php
+$basic->getConnectionCount();
+```
+
+Retrieve the current block count as an `integer`.
+
+```php
+$basic->getBlockCount();
+```
+
+Retrieve the block hash for a specified index.
+
+```php
+$basic->getBlockHashByIndex(int $index);
+```
+
+Retrieve a `Block` instance by hash.
+
+```php
+$basic->getBlockByHash(string $hash);
+```
+
+Retrieve a transaction as a `string` or a `Transaction` instance.
+
+```php
+// As a Transaction instance (default).
+$basic->getTransactionById(string $hash, true);
+// As an encrypted string.
+$basic->getTransactionById(string $hash, false);
+```
+
+Retrieve the current network hash rate (hash/s) as a `double`.
+
+```php
+$basic->getNetworkHashRate();
+```
+
+### Extended methods
+
+Initialise the `Extended` class.
+
+```php
+$extended = new pxgamer\BTGExp\Extended();
+```
+
+Retrieve the current money supply as a `double`.
+
+```php
+$extended->getMoneySupply();
+```
+
+Retrieve the current network details as a `Network` instance.
+
+```php
+$extended->getNetwork();
+```
+
+Retrieve information for an address as an `Address` instance.
+
+```php
+$extended->getAddress(string $address);
+```
+
+Retrieve the balance for an address as a `double`.
+
+```php
+$extended->getBalance(string $address);
+```
+
+Retrieve the latest transactions as an array.
+
+```php
+$extended->getLastTransactions();
+$extended->getLastTransactions(int $count);
+$extended->getLastTransactions(int $count, int $min);
+```
+
+Retrieve the last 7 blocks as an array.
+
+```php
+$extended->getLastBlocks();
+```
+
+Retrieve a `Block` instance specified by it's height.
+
+```php
+$extended->getBlockByHeight(int $height);
 ```
 
 ## Change log
