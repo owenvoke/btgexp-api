@@ -3,7 +3,7 @@
 namespace pxgamer\BTGExp;
 
 /**
- * Class Block
+ * Class Block.
  */
 class Block
 {

@@ -3,7 +3,7 @@
 namespace pxgamer\BTGExp;
 
 /**
- * Class Network
+ * Class Network.
  */
 class Network
 {

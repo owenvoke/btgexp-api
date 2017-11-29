@@ -3,7 +3,7 @@
 namespace pxgamer\BTGExp;
 
 /**
- * Class Address
+ * Class Address.
  */
 class Address
 {

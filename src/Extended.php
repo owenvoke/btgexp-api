@@ -5,7 +5,7 @@ namespace pxgamer\BTGExp;
 use GuzzleHttp\Client;
 
 /**
- * Class Extended
+ * Class Extended.
  */
 class Extended
 {

@@ -5,10 +5,13 @@ namespace pxgamer\BTGExp;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class ExtendedTest
+ * Class ExtendedTest.
  */
 class ExtendedTest extends TestCase
 {
+    /**
+     * A default test BTG address.
+     */
     const TEST_ADDRESS = 'GP4MnT7Xm4ahZhRcWFaqPGkZknMda1XuzA';
     /**
      * @var Extended
@@ -16,13 +19,16 @@ class ExtendedTest extends TestCase
     private $instance;
 
     /**
-     * Set up the instance
+     * Set up the instance.
      */
     public function setUp()
     {
         $this->instance = new Extended();
     }
 
+    /**
+     * Test if the Extended::moneySupply() method works correctly.
+     */
     public function testCanGetMoneySupply()
     {
         $response = $this->instance
@@ -32,6 +38,9 @@ class ExtendedTest extends TestCase
         $this->assertGreaterThan(0, $response);
     }
 
+    /**
+     * Test if the Extended::getNetwork() method works correctly.
+     */
     public function testCanGetNetwork()
     {
         $response = $this->instance
@@ -48,6 +57,9 @@ class ExtendedTest extends TestCase
         $this->assertInternalType('int', $response->getTimeOffset());
     }
 
+    /**
+     * Test if the Extended::getAddress() method works correctly.
+     */
     public function testCanGetAddress()
     {
         $response = $this->instance
@@ -60,6 +72,9 @@ class ExtendedTest extends TestCase
         $this->assertInternalType('array', $response->getLastTransactions());
     }
 
+    /**
+     * Test if the Extended::getBalance() method works correctly.
+     */
     public function testCanGetBalance()
     {
         $response = $this->instance
@@ -69,6 +84,9 @@ class ExtendedTest extends TestCase
         $this->assertGreaterThan(0, $response);
     }
 
+    /**
+     * Test if the Extended::getLastTransactions() method works correctly.
+     */
     public function testCanGetLastTransactions()
     {
         $response = $this->instance
@@ -78,6 +96,9 @@ class ExtendedTest extends TestCase
         $this->assertNotEmpty($response);
     }
 
+    /**
+     * Test if the Extended::getLastBlocks() method works correctly.
+     */
     public function testCanGetLastBlocks()
     {
         $response = $this->instance
@@ -88,6 +109,9 @@ class ExtendedTest extends TestCase
         $this->assertInstanceOf(Block::class, $response[0]);
     }
 
+    /**
+     * Test if the Extended::getBlockByHeight() method works correctly.
+     */
     public function testCanGetBlockByHeight()
     {
         $response = $this->instance
